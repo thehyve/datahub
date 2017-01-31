@@ -15,4 +15,4 @@ You can download the files by using the links below:
 - **Seed data, part1**: [cbioportal-seed SQL (.gz) file - part1 (no pdb_ tables)](https://github.com/cbioportal/datahub/raw/b69c86803c40d543080bf31a645721d06c82d08d/seedDB/seed-cbioportal_no-pdb_hg19.sql.gz)
 - **Seed data, part2 (optional)** [cbioportal-seed SQL (.gz) file - part2 (only pdb_ tables)](https://github.com/cbioportal/datahub/raw/b69c86803c40d543080bf31a645721d06c82d08d/seedDB/seed-cbioportal_only-pdb.sql.gz)
 
-**For developers:*** [How to update the seed version](https://github.com/cbioportal/datahub/blob/master/seedDB/Update-Seed-Database.md)
+**For developers:** [How to update the seed version](https://github.com/cbioportal/datahub/blob/master/seedDB/Update-Seed-Database.md)
