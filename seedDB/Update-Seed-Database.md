@@ -8,8 +8,8 @@ To update the seed database to a recent version you should follow these steps:
 3- Move to the folder where you want to save the seed files and generate them. To do that, use the following commands (assuming that the database is running on port 8306):
 
 ```shell
-mysqldump -u cbio -pP@ssword1 -P 8306 --host 127.0.0.1 --ignore-table cbioportal.pdb_uniprot_alignment --ignore-table cbioportal.pdb_uniprot_residue_mapping cbioportal > seed-cbioportal_no-pdb_hg19.sql
-mysqldump -u cbio -pP@ssword1 -P 8306 --host 127.0.0.1 --no-create-info cbioportal pdb_uniprot_alignment pdb_uniprot_residue_mapping > seed-cbioportal_only-pdb.sql
+mysqldump -u cbio -pP@ssword1 -P 8306 --host 127.0.0.1 --ignore-table cbioportal.pdb_uniprot_alignment --ignore-table cbioportal.pdb_uniprot_residue_mapping --ignore-table cbioportal.info --no-create-info --complete-insert cbioportal > seed-cbioportal_no-pdb_hg19.sql
+mysqldump -u cbio -pP@ssword1 -P 8306 --host 127.0.0.1 --no-create-info cbioportal pdb_uniprot_alignment pdb_uniprot_residue_mapping --complete-insert > seed-cbioportal_only-pdb.sql
 ```
 
 4- Zip the obtained files:
