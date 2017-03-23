@@ -11,7 +11,7 @@ Which is suitable for:
 
 You can download the files by using the links below:
 
-- **Schema 1.3.0**: [SQL file with create table statements for portal release 1.4.1](https://raw.githubusercontent.com/cBioPortal/cbioportal/v1.4.1/core/src/main/resources/db/cgds.sql) 
+- **Schema 1.4.0**: [SQL file with create table statements for portal release 1.4.1](https://raw.githubusercontent.com/cBioPortal/cbioportal/v1.4.1/core/src/main/resources/db/cgds.sql) 
 - **Seed data, part1**: [cbioportal-seed SQL (.gz) file - part1 (no pdb_ tables)](https://github.com/cbioportal/datahub/raw/master/seedDB/seed-cbioportal_no-pdb_hg19.sql.gz)
 - **Seed data, part2 (optional)** [cbioportal-seed SQL (.gz) file - part2 (only pdb_ tables)](https://github.com/cbioportal/datahub/raw/master/seedDB/seed-cbioportal_only-pdb.sql.gz)
 
