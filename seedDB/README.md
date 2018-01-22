@@ -12,13 +12,23 @@ This schema is required for cBioPortal release versions:
 
 When using a release version **> 1.9.0**, a migration step to a new database schema might be required. The migration process is described [here](https://github.com/cBioPortal/cbioportal/blob/master/docs/Updating-your-cBioPortal-installation.md#running-the-migration-script).
 
-**Schema 2.4.0**: [SQL file with create table statements](https://raw.githubusercontent.com/cBioPortal/cbioportal/v1.9.0/db-scripts/src/main/resources/cgds.sql)<br>
-**Seed database :** [seed-cbioportal_hg19_v2.4.0.sql.gz](https://github.com/cBioPortal/datahub/raw/master/seedDB/seed-cbioportal_hg19_v2.4.0.sql.gz)<br>
+**Schema 2.4.0**: [SQL file with create table
+ statements](https://raw.githubusercontent.com/cBioPortal/cbioportal/v1.9.0/db-scripts/src/main/resources/cgds.sql)<br>
+
+**Seed database hg19:** [seed-cbioportal_hg19_v2.4.0.sql.gz](https://github.com/cBioPortal/datahub/raw/master/seedDB/seed-cbioportal_hg19_v2.4.0.sql.gz)<br>
 md5sum 1014ed1f9d72103f2b46e5615aacbc2f
 
-Contents of seed database:
+Contents of hg19 seed database:
 - Entrez Gene IDs, HGNC symbols and aliases updated in August 2017 from NCBI
 - Gene lengths retrieved from Gencode Release 26 (mapped to GRCh37)
+- Pfam graphics fetched in August 2017
+
+**Seed database hg38:** (This version was made for an instance based on hg38 and requires some patches to the cBioPortal source code) [seed-cbioportal_hg38_v2.4.0.sql.gz](seed-cbioportal_hg38_v2.4.0.sql.gz)<br>
+md5sum 11fc32b73ad91b3c1748b6224a2b0e6f
+
+Contents of hg38 seed database:
+- Entrez Gene IDs, HGNC symbols and aliases updated in January 2018 from NCBI
+- Gene lengths retrieved from Gencode Release 27
 - Pfam graphics fetched in August 2017
 
 ## Previous seed databases
