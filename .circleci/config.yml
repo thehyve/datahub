@@ -45,8 +45,8 @@ jobs:
             ls -la
             cd cbioportal/core/src/main/scripts/importer
             ls -la
-            ./validateData.py
             echo "test 123" > /home/circleci/repo/test-reports/abc.txt
+            ./validateData.py
 
       - store_artifacts:
           path: test-reports
