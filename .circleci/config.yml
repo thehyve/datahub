@@ -42,7 +42,8 @@ jobs:
           name: run tests
           command: |
             git clone https://github.com/cBioPortal/cbioportal.git
-            cd core/src/main/scripts/importer
+            ls -la
+            cd cbioportal/core/src/main/scripts/importer
             validateData.py
 
       - store_artifacts:
