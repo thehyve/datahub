@@ -44,7 +44,8 @@ jobs:
             git clone https://github.com/cBioPortal/cbioportal.git
             ls -la
             cd cbioportal/core/src/main/scripts/importer
-            validateData.py
+            ls -la
+            ./validateData.py
 
       - store_artifacts:
           path: test-reports
