@@ -45,6 +45,7 @@ jobs:
             ls -la
             cd cbioportal/core/src/main/scripts/importer
             ls -la
+            mkdir /home/circleci/repo/test-reports
             echo "test 123" > /home/circleci/repo/test-reports/abc.txt
             ./validateData.py
 
