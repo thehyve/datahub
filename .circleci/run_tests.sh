@@ -1,12 +1,4 @@
-#git diff --name-only origin/rc $1
-
-
-#git diff --name-only origin/rc | tr '\n' ','
-
-
-#files_changing=`git diff --name-only origin/rc | tr '\n' ';'
-
-#mails=`echo $files_changing | tr ";" "\n"`
+# This script detects the studies that were changed and triggers the validation accordingly
 
 STUDIES_DIR="public/"
 
@@ -30,13 +22,16 @@ do
       fi
     fi
 done
+num_studies=${#list_of_study_dirs[@]}
+if [[ $num_studies > 0 ]]; then
+  echo $'\n====List of studies:====\n'
+  list_csv=`echo ${list_of_study_dirs[@]} | tr ' ' ','`
+  echo $list_csv
 
-echo $'\n====List of studies:====\n'
-list_csv=`echo ${list_of_study_dirs[@]} | tr ' ' ','`
-echo $list_csv
-
-# command example: ./validateStudies.py -l ../../../test/scripts/test_data/study_es_0,../../../test/scripts/test_data/study_es_1 -html ../../../test/scripts/test_data/validation-reports
-validation_command="~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -l $list_csv -html ~/repo/test-reports"
-echo $'\nExecuting: '; echo $validation_command
-sh -c "$validation_command"
+  validation_command="~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d ~/repo/ -l $list_csv -html ~/repo/test-reports"
+  echo $'\nExecuting: '; echo $validation_command
+  sh -c "$validation_command"
+else
+  echo "No studies were changed"
+fi
 
