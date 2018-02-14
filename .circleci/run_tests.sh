@@ -38,4 +38,5 @@ echo $list_csv
 # command example: ./validateStudies.py -l ../../../test/scripts/test_data/study_es_0,../../../test/scripts/test_data/study_es_1 -html ../../../test/scripts/test_data/validation-reports
 validation_command="~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -l $list_csv -html ~/repo/test-reports"
 echo $'\nExecuting: '; echo $validation_command
+sh -c "$validation_command"
 
