@@ -42,6 +42,7 @@ jobs:
           name: run tests
           command: |
             git clone https://github.com/thehyve/cbioportal.git
+            cd cbioportal
             git fetch origin validating-multiple-studies
             git checkout validating-multiple-studies
             cd .circleci
