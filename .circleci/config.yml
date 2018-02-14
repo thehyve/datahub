@@ -41,13 +41,12 @@ jobs:
       - run:
           name: run tests
           command: |
-            git clone https://github.com/cBioPortal/cbioportal.git
-            ls -la
-            cd cbioportal/core/src/main/scripts/importer
-            ls -la
+            git clone https://github.com/thehyve/cbioportal.git
+            git fetch origin validating-multiple-studies
+            git checkout validating-multiple-studies
+            cd .circleci
             mkdir /home/circleci/repo/test-reports
-            echo "test 123" > /home/circleci/repo/test-reports/abc.txt
-            ./validateData.py
+            ./run_tests.sh
 
       - store_artifacts:
           path: test-reports
