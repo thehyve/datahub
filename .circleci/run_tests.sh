@@ -31,7 +31,13 @@ if [[ $num_studies > 0 ]]; then
   validation_command="~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d ~/repo/ -l $list_csv -html ~/repo/test-reports"
   echo $'\nExecuting: '; echo $validation_command
   #sh -c "$validation_command"i
-  ~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d ~/repo/ -l $list_csv -html ~/repo/test-reports
+  if ~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d ~/repo/ -l $list_csv -html ~/repo/test-reports; then
+     echo "Tests passed successfully"
+     exit 0
+  else
+    echo "Errors found"
+    exit 1
+  fi
 else
   echo "No studies were changed"
 fi
