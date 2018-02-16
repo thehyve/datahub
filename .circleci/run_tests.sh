@@ -5,14 +5,14 @@ STUDIES_DIR="public/"
 git remote add upstream git@github.com:cbioportal/datahub.git
 git fetch upstream rc
 
-files_changing=`git diff --name-only upstream/rc`
+files_changing=`git diff --name-only --diff-filter=ACMRU upstream/rc`
 list_of_study_dirs=()
 
 for file_changing in $files_changing
 do
     #echo "file > [$file_changing]"
     # if file is part of studies_dir, store its directory path (except case_lists)
-    if [[ $file_changing = *$STUDIES_DIR* ]]; then
+    if [ $file_changing = *$STUDIES_DIR* ] && [ $file_changing != *".htm"* ]; then
       echo "study file changing > [$file_changing]"
       dir_name=`dirname $file_changing`
       if [[ $dir_name != *"/case_lists"* ]]; then
