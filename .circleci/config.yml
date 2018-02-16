@@ -48,12 +48,14 @@ jobs:
       - run:
           name: run tests
           command: |
+            git remote add upstream git@github.com:cbioportal/datahub.git
             git clone https://github.com/thehyve/cbioportal.git
             cd cbioportal
             git fetch origin validating-multiple-studies
             git checkout validating-multiple-studies
             cd ~/repo/.circleci
             mkdir ~/repo/test-reports
+            mkdir ~/repo/test-reports/ERRORS
             ./run_tests.sh
 
       - store_artifacts:
