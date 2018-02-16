@@ -23,14 +23,14 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
+          - v1-dependencies-{{ checksum "requirements_py" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run:
           name: install dependencies
           command: |
-            sudo pip install -r requirements.txt
+            sudo pip install -r requirements_py
             wget https://github.com/git-lfs/git-lfs/releases/download/v2.3.4/git-lfs-linux-amd64-2.3.4.tar.gz
             tar -xvf git-lfs-linux-amd64-2.3.4.tar.gz
             cd git-lfs-2.3.4
@@ -42,7 +42,7 @@ jobs:
       - save_cache:
           paths:		
           - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "requirements_py" }}
         
       # run tests!
       - run:
