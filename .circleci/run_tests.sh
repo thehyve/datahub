@@ -12,7 +12,7 @@ for file_changing in $files_changing
 do
     #echo "file > [$file_changing]"
     # if file is part of studies_dir, store its directory path (except case_lists)
-    if [ $file_changing = *$STUDIES_DIR* ] && [ $file_changing != *".htm"* ]; then
+    if [[ $file_changing = *$STUDIES_DIR* ]] && [[ $file_changing != *".htm"* ]]; then
       echo "study file changing > [$file_changing]"
       dir_name=`dirname $file_changing`
       if [[ $dir_name != *"/case_lists"* ]]; then
