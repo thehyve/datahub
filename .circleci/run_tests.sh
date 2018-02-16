@@ -45,6 +45,7 @@ if [[ $num_studies > 0 ]]; then
     # move errors to ERRORS/ folder:
     erred_studies=`grep -rnlz $test_reports_location -e 'Validation status.*Failed' `
     mv $erred_studies $test_reports_location/ERRORS
+    exit 1
   fi
 else
   echo "No studies were changed"
