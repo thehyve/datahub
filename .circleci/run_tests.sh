@@ -34,14 +34,14 @@ if [[ $num_studies > 0 ]]; then
   list_csv=`echo ${list_of_study_dirs[@]} | tr ' ' ','`
   echo $list_csv
 
-  test_reports_location="~/repo/test-reports"
-  validation_command="~/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d ~/repo/ -l $list_csv -p ~/repo/.circleci/portalinfo -html $test_reports_location"
+  test_reports_location="$HOME/repo/test-reports"
+  validation_command="$HOME/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d $HOME/repo/ -l $list_csv -p $HOME/repo/.circleci/portalinfo -html $test_reports_location"
   echo $'\nExecuting: '; echo $validation_command
   sh -c "$validation_command"
   
   # move errors to ERRORS/ folder:
   erred_studies=`grep -rnlz $test_reports_location -e 'Validation status.*Failed' `
-  sh -c "mv $erred_studies $test_reports_location/ERRORS"
+  mv $erred_studies $test_reports_location/ERRORS
 
 else
   echo "No studies were changed"
