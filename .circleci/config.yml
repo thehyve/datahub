@@ -53,7 +53,7 @@ jobs:
             git fetch origin validating-multiple-studies
             git checkout validating-multiple-studies
             cd ~/repo/.circleci
-            mkdir /home/circleci/repo/test-reports
+            mkdir ~/repo/test-reports
             ./run_tests.sh
 
       - store_artifacts:

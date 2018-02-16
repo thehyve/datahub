@@ -2,6 +2,9 @@
 
 STUDIES_DIR="public/"
 
+git remote add upstream git@github.com:cbioportal/datahub.git
+git fetch upstream rc
+
 files_changing=`git diff --name-only upstream/rc`
 list_of_study_dirs=()
 
@@ -19,8 +22,8 @@ do
           echo "adding to list..."
           list_of_study_dirs+=($dir_name)
           echo "downloading files from git lfs..."
-          git lfs pull -I "~/repo/$dir_name/*"
-          git lfs pull -I "~/repo/$dir_name/case_lists/*"
+          git lfs pull -I "$dir_name/*"
+          git lfs pull -I "$dir_name/case_lists/*"
         fi
       fi
     fi
