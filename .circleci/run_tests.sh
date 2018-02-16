@@ -37,12 +37,15 @@ if [[ $num_studies > 0 ]]; then
   test_reports_location="$HOME/repo/test-reports"
   validation_command="$HOME/repo/cbioportal/core/src/main/scripts/importer/./validateStudies.py -d $HOME/repo/ -l $list_csv -p $HOME/repo/.circleci/portalinfo -html $test_reports_location"
   echo $'\nExecuting: '; echo $validation_command
-  sh -c "$validation_command"
-  
-  # move errors to ERRORS/ folder:
-  erred_studies=`grep -rnlz $test_reports_location -e 'Validation status.*Failed' `
-  mv $erred_studies $test_reports_location/ERRORS
-
+  if sh -c "$validation_command" ; then
+    echo "Tests passed successfully"
+    exit 0
+  else
+    echo "Errors found"
+    # move errors to ERRORS/ folder:
+    erred_studies=`grep -rnlz $test_reports_location -e 'Validation status.*Failed' `
+    mv $erred_studies $test_reports_location/ERRORS
+  fi
 else
   echo "No studies were changed"
 fi
