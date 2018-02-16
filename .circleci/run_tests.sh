@@ -40,9 +40,9 @@ if [[ $num_studies > 0 ]]; then
   sh -c "$validation_command"
   
   # move errors to ERRORS/ folder:
-  cd $test_reports_location
+  sh -c "cd $test_reports_location"
   erred_studies=`grep -rnlz '.' -e 'Validation status.*Failed'`
-  mv $erred_studies $test_reports_location/ERRORS
+  sh -c "mv $erred_studies $test_reports_location/ERRORS"
 
 else
   echo "No studies were changed"
