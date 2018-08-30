@@ -61,3 +61,19 @@ jobs:
           path: test-reports
           destination: test-reports
           
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
+  scheduled-workflow:
+    triggers:
+      - schedule:
+          cron: "30 * * * *"
+          filters:
+            branches:
+              only: 
+                - master
+
+    jobs:
+      - build
