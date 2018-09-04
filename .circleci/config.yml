@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  checkout_dependencies:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
@@ -54,26 +54,40 @@ jobs:
             # make test reports location:
             mkdir ~/repo/test-reports
             mkdir ~/repo/test-reports/ERRORS
-            # run the tests:
-            ./validate_all.sh
 
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
-          
+  validate_changed_studies:
+    - run: 
+        name: validate changed studies
+        command: ./validate_changed_studies.sh
+    - store_artifacts:
+        path: test-reports
+        destination: test-reports
+
+  validate_all:
+    - run: 
+        name: validate all studies
+        command: ./validate_all.sh
+    - store_artifacts:
+        path: test-reports
+        destination: test-reports
+
 workflows:
   version: 2
   commit-workflow:
     jobs:
-      - build
+      - checkout_dependencies
+      - validate_changed_studies:
+          branches:
+            ignore:
+              - master
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "30 * * * *"
+          cron: "30 11 4 * *"
           filters:
             branches:
               only: 
                 - master
-
     jobs:
-      - build
+      - checkout_dependencies
+      - validate_all
